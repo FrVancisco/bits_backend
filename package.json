@@ -1,0 +1,18 @@
+{
+  "name": "bits_francisco_saccone",
+  "version": "1.0.0",
+  "description": "bits interview assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "francisco saccone",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.13.1",
+    "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
