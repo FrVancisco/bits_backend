@@ -1,6 +1,6 @@
-import { createUser, getUser } from "../../src/api/users";
+import {checkUserStatus, createUser, getUser} from "../../src/api/users";
 import { currentTimeHHMMSS, getRandomDateOfBirth } from "../../src/libs/utils/timestamps";
-import { getTitle } from "../../src/libs/utils/helpers";
+import {getStatusFromRating, getTitle} from "../../src/libs/utils/helpers";
 
 describe('v1 users api tests', () => {
     const timeStamp: string = currentTimeHHMMSS();
@@ -27,7 +27,11 @@ describe('v1 users api tests', () => {
                 email: `${rating}${email}`,
                 password,
                 rating
-            }, 200);
+            }, 200).then((): void => {
+                const userId = Cypress.env('newUserId');
+                const expectedStatus: string = getStatusFromRating(rating);
+                checkUserStatus(userId, expectedStatus);
+            });
         });
     }
 
